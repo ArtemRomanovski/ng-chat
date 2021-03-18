@@ -1,0 +1,50 @@
+<div class="form-box">
+	<form>
+		<div class="form-group">
+			<label for="UserName">
+				Name
+			</label>
+			<input 
+				required 
+				minlength="3" 
+				[pattern]="regExpName[0]"
+				[maxlength]="maxLength" 
+				ngModel 
+				name="UserName" 
+				#UserName="ngModel"
+				id="UserName" 
+				class="form-control field" 
+				type="text"
+				placeholder="name" 
+				autofocus>
+			<div 
+				class="alert alert-danger" 
+				*ngIf="UserName.touched && !UserName.valid">
+				<div *ngIf="UserName.errors.required">
+					Nickname is required.
+				</div>
+				<div *ngIf="UserName.errors.minlength">
+					Name should be minimum
+					{{UserName.errors.minlength.requiredLength}}
+					characters.
+				</div>
+				<div>
+					<p>
+						The name must not consist of numbers or symbols.
+					</p>
+					<p>
+						Name should be maximum 20 letters.	
+					</p>
+				</div>
+			</div>
+		</div>
+		<div>
+			<button 
+				(click)="addUser(UserName);" 
+				type="submit" 
+				class="btn btn-primary">
+				Go
+			</button>
+		</div>
+	</form>
+</div>
