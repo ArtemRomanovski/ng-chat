@@ -1,91 +1,54 @@
 <div class="chat-box">
 	<div class="chat__header-box">
 		<div class="header-box__date">
-			<span>{{dateNow}}</span>
+			<span>{{this.dateService.dateNow}}</span>
 		</div>
 		<div class="header-box__time">
-			<span>{{timeNow}}</span>
+			<span>{{this.dateService.timeNow}}</span>
 		</div>	
 	</div>
 	<div class="chat__main-box">
-		<div class="message-box_provider-message">
-			<div class="message provider-message">
-				<span class="message-sender">
-					Поставщик
-				</span>
-				<span>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</span>
-				<span class="message-time">
-					Time
-				</span>
-			</div>
-		</div>
-		<div class="message-box_client-message">
-			<div class="message client-message">
-				<span class="message-sender">
-					Покупатель
-				</span>
-				<span>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</span>
-				<span class="message-time">
-					Time
-				</span>
-			</div>
-		</div>
-		<div class="message-box_client-message">
-			<div class="message client-message">
-				<span class="message-sender">
-					Покупатель
-				</span>
-				<span>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</span>
-				<span class="message-time">
-					Time
-				</span>
-			</div>
-		</div>
-		<div class="message-box_client-message">
-			<div class="message client-message">
-				<span class="message-sender">
-					Покупатель
-				</span>
-				<span>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</span>
-				<span class="message-time">
-					Time
-				</span>
-			</div>
-		</div>
-		<div class="message-box_client-message">
-			<div class="message client-message">
-				<span class="message-sender">
-					Покупатель
-				</span>
-				<span>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</span>
-				<span class="message-time">
-					Time
-				</span>
-			</div>
-		</div>
-		<div class="message-box_client-message">
-			<div class="message client-message">
-				<span class="message-sender">
-					Покупатель
-				</span>
-				<span>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</span>
-				<span class="message-time">
-					Time
-				</span>
-			</div>
-		</div>
+		<ul *ngFor="let message of chatService.chatDataBaseMessages">
+			<li *ngIf="message.sender == 'Поставщик'" class="message-box_provider-message">
+				<div class="message provider-message">
+					<span class="message-sender">
+						{{message.sender}}
+					</span>
+					<span>
+						{{message.title}}
+					</span>
+					<span class="message-time">
+						{{message.time}}
+					</span>
+				</div>
+			</li>
+			<li *ngIf="message.sender == 'Покупатель'" class="message-box_client-message">
+				<div class="message client-message">
+					<span class="message-sender">
+						{{message.sender}}
+					</span>
+					<span>
+						{{message.title}}
+					</span>
+					<span class="message-time">
+						{{message.time}}
+					</span>
+				</div>
+			</li>
+			<li *ngIf="message.sender == this.clientService.currantClientName" class="message-box_client-message">
+				<div class="message client-message">
+					<span class="message-sender">
+						{{message.sender}}
+					</span>
+					<span>
+						{{message.title}}
+					</span>
+					<span class="message-time">
+						{{message.time}}
+					</span>
+				</div>
+			</li>
+		</ul>
 	</div>
 	<div class="chat__bottom-box">
 		<form>
@@ -93,9 +56,18 @@
 				<img src="../../../assets/icon.png">
 			</div>
 			<div class="message-box">
-					<textarea placeholder="Введите сообщение..."></textarea>
+				<textarea 
+				name="textarea"
+				(keydown.enter)="pushMessage(clientMessage.value);"
+				[(ngModel)]="this.chatService.message"
+				#clientMessage="ngModel"
+				placeholder="Введите сообщение...">
+				</textarea>
 			</div>
-			<button class="btn-push-mes">
+			<button 
+			class="btn-push-mes"
+			(click)="pushMessage(clientMessage.value);"
+			>
 			</button>
 		</form>
 	</div>

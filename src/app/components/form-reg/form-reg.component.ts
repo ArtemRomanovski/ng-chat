@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { UserService } from "../services/user.service";
+import { ClientService } from "../services/client.service";
 
 @Component({
 	selector: "app-form-reg",
@@ -12,13 +12,13 @@ export class FormRegComponent implements OnInit {
 	public maxLength = 20;
 	public name = "";
 
-	constructor(private userService: UserService) {}
+	constructor(private clientService: ClientService) {}
 
 	public ngOnInit(): void {
 	}
 
-	// add New User
-	public addUser(name) {
-		this.userService.addUser(name);
+	// add New Client
+	public addUser(clientName) {
+		this.clientService.addClient(clientName);
 	}
 }

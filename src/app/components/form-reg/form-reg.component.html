@@ -11,7 +11,7 @@
 				[maxlength]="maxLength" 
 				ngModel 
 				name="UserName" 
-				#UserName="ngModel"
+				#clientName="ngModel"
 				id="UserName" 
 				class="form-control field" 
 				type="text"
@@ -19,13 +19,13 @@
 				autofocus>
 			<div 
 				class="alert alert-danger" 
-				*ngIf="UserName.touched && !UserName.valid">
-				<div *ngIf="UserName.errors.required">
+				*ngIf="clientName.touched && !clientName.valid">
+				<div *ngIf="clientName.errors.required">
 					Nickname is required.
 				</div>
-				<div *ngIf="UserName.errors.minlength">
+				<div *ngIf="clientName.errors.minlength">
 					Name should be minimum
-					{{UserName.errors.minlength.requiredLength}}
+					{{clientName.errors.minlength.requiredLength}}
 					characters.
 				</div>
 				<div>
@@ -40,7 +40,7 @@
 		</div>
 		<div>
 			<button 
-				(click)="addUser(UserName);" 
+				(click)="addUser(clientName.value);" 
 				type="submit" 
 				class="btn btn-primary">
 				Go

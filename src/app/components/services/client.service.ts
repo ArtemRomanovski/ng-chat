@@ -3,12 +3,14 @@ import { Injectable } from "@angular/core";
 @Injectable({
 	providedIn: "root"
 })
-export class UserService {
+export class ClientService {
 
 	public toggle = false;
+	public currantClientName: string;
 
 	// Add New User
-	public addUser(name) {
+	public addClient(clientName) {
+		this.currantClientName = clientName;
 		this.toggle = !this.toggle;
 	}
 }
