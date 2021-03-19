@@ -5,6 +5,9 @@ import { Injectable } from "@angular/core";
 })
 export class ClientService {
 
+	public regExpName = [/^[a-zA-Zа-яА-ЯёЁ]*$/];
+	public maxLength = 20;
+	public name = "";
 	public toggle = false;
 	public currantClientName: string;
 

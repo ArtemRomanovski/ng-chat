@@ -34,11 +34,11 @@ export class ChatService {
 			time: "16:49"
 		},
 		{
-			sender: "Покупатель",
+			sender: "Поставщик",
 			title: "Message 6. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
 			time: "16:49"
 		},
-	]
+	];
 	public message: string;
 	public senderValue = this.clientService.currantClientName;
 	public titleValue: string;
@@ -48,32 +48,45 @@ export class ChatService {
 		private clientService: ClientService,
 		private dateService: DateService
 	) { }
-	
+
 	public getTimeMessage() {
 		this.dateService.getTime();
 		this.timeValue = this.dateService.timeNow;
 	}
 
-	
 	public addMessage(titleValue) {
 		this.getTimeMessage();
-
-		let message = {
+		this.fakeM = titleValue;
+		const message = {
 			sender: this.senderValue,
 			title: titleValue,
 			time: this.timeValue
-		}
+		};
 		this.chatDataBaseMessages.unshift(message);
 		this.message = "";
+		this.addFakeMessage(); // add Fake Message
 	}
 
-	public disableBrowsereEvent() {	
-		window.onkeydown=function(event){
+	// add Fake Message
+	public fakeM;
+	public addFakeMessage() {
+		this.getTimeMessage();
+		const fakeMessage = {
+			sender: "Поставщик",
+			title: `"${this.fakeM}" - Are you serios?`,
+			time: this.timeValue
+		};
+		setTimeout(() => {
+			this.chatDataBaseMessages.unshift(fakeMessage);
+		}, 2000);
+	}
+
+	public disableBrowsereEvent() {
+		window.onkeydown = function(event) {
 			if(event.keyCode==13){
 				if(event.preventDefault) event.preventDefault(); // This should fix it
 				return false; // Just a workaround for old browsers
 			}
-		}
+		};
 	}
-
 }

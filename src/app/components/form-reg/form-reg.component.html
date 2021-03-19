@@ -7,8 +7,8 @@
 			<input 
 				required 
 				minlength="3" 
-				[pattern]="regExpName[0]"
-				[maxlength]="maxLength" 
+				[pattern]="this.clientService.regExpName[0]"
+				[maxlength]="this.clientService.maxLength" 
 				ngModel 
 				name="UserName" 
 				#clientName="ngModel"

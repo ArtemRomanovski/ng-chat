@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { ClientService } from "../services/client.service";
 
 @Component({
@@ -6,18 +6,10 @@ import { ClientService } from "../services/client.service";
 	templateUrl: "./form-reg.component.html",
 	styleUrls: ["./form-reg.component.scss"]
 })
-export class FormRegComponent implements OnInit {
+export class FormRegComponent {
 
-	public regExpName = [/^[a-zA-Zа-яА-ЯёЁ]*$/];
-	public maxLength = 20;
-	public name = "";
+	constructor(public clientService: ClientService) {}
 
-	constructor(private clientService: ClientService) {}
-
-	public ngOnInit(): void {
-	}
-
-	// add New Client
 	public addUser(clientName) {
 		this.clientService.addClient(clientName);
 	}

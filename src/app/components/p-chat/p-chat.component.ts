@@ -10,12 +10,11 @@ import { ChatService } from "../services/chat.service";
 })
 export class PChatComponent implements OnInit {
 
-
 	constructor(
 		public clientService: ClientService,
 		public dateService: DateService,
 		public chatService: ChatService
-		) { }
+	) { }
 
 	public ngOnInit(): void {
 		this.chatService.disableBrowsereEvent();
@@ -28,7 +27,4 @@ export class PChatComponent implements OnInit {
 	public pushMessage(titleValue) {
 		this.chatService.addMessage(titleValue);
 	}
-
-
-
 }

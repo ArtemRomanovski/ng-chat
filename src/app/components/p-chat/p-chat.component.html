@@ -22,20 +22,7 @@
 					</span>
 				</div>
 			</li>
-			<li *ngIf="message.sender == 'Покупатель'" class="message-box_client-message">
-				<div class="message client-message">
-					<span class="message-sender">
-						{{message.sender}}
-					</span>
-					<span>
-						{{message.title}}
-					</span>
-					<span class="message-time">
-						{{message.time}}
-					</span>
-				</div>
-			</li>
-			<li *ngIf="message.sender == this.clientService.currantClientName" class="message-box_client-message">
+			<li *ngIf="message.sender == 'Покупатель' || message.sender == this.clientService.currantClientName" class="message-box_client-message">
 				<div class="message client-message">
 					<span class="message-sender">
 						{{message.sender}}
