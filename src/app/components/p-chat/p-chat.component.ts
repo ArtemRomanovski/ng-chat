@@ -22,6 +22,7 @@ export class PChatComponent implements OnInit {
 			this.dateService.getFullDate();
 		}, 0);
 		this.chatService.chatDataBaseMessages.reverse();
+		this.chatService.changeName();
 	}
 
 	public pushMessage(titleValue) {

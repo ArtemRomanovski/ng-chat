@@ -54,6 +54,14 @@ export class ChatService {
 		this.timeValue = this.dateService.timeNow;
 	}
 
+	public changeName() {
+		this.chatDataBaseMessages.filter(i => {
+			if(i.sender == "Покупатель") {
+				i.sender = this.senderValue;
+			}
+		});
+	}
+
 	public addMessage(titleValue) {
 		this.getTimeMessage();
 		this.fakeM = titleValue;
