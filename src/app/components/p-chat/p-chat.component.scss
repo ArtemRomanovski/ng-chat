@@ -16,16 +16,16 @@
 		display: flex;
 		flex-flow: column;
 		align-items: center;
-
+		
 		.header-box__date {
 			text-align: center;
 			margin: 5px;
-	
+			
 			span {
 				font-weight: 600;
 			};
 		};
-	
+		
 		.header-box__time {
 			text-align: center;
 			width: 50px;
@@ -36,13 +36,13 @@
 			margin-bottom: 5px;
 		};
 	};
-
+	
 	.chat__main-box {
 		height: 100%;
 		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-
+		flex-direction: column-reverse;
+		overflow-y: auto;
+		
 		.message {
 			border: none;
 			border-radius: 5px;
