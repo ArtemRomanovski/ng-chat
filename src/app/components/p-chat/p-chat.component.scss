@@ -3,40 +3,88 @@
 	bottom: 20px;
 	right: 20px;
 	z-index: 10;
-	border: 1px solid grey;
+	border: 2px solid grey;
 	border-radius: 15px;
 	width: 250px;
 	height: 350px;
 	display: flex;
 	flex-flow: column;
 	justify-content: space-between;
+	box-shadow: 1px 1px 10px 2px grey;
+	
+	.chat__header-box {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
 
-	.chat__main-box {
-
-		.chat__header-box {
-			display: flex;
-			flex-flow: column;
-			align-items: center;
-
-			.header-box__date {
-				text-align: center;
-				margin: 5px;
-
-				span {
-					font-weight: 600;
-				}
-			};
-
-			.header-box__time {
-				text-align: center;
-				width: 50px;
-				color: #cbd0d4;
-				padding-top: 15px;
-				background-color: #97a2aa;
-				border-radius: 5px;
-				margin-bottom: 5px;
+		.header-box__date {
+			text-align: center;
+			margin: 5px;
+	
+			span {
+				font-weight: 600;
 			};
 		};
+	
+		.header-box__time {
+			text-align: center;
+			width: 50px;
+			color: #cbd0d4;
+			padding: 15px 0 6px 0;
+			background-color: #97a2aa;
+			border-radius: 10px;
+			margin-bottom: 5px;
+		};
+	};
+
+	.chat__main-box {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+
+		.message {
+			border: none;
+			border-radius: 5px;
+			margin-bottom: 10px;
+			padding: 5px 7px;
+			display: flex;
+			flex-flow: wrap column;
+		
+			span.message-sender {
+				font-weight: 600;
+			};
+		
+			span.message-time {
+				color: grey;
+				text-align: right;
+				font-size: 12px;
+			};
+		};
+		
+		.message-box_provider-message {
+			display: flex;
+			justify-content: start;
+		
+			.provider-message {
+				background: #ffffff;
+				margin-left: 5px;
+				margin-right: 30px;
+				box-shadow: 2px 2px 5px  grey;
+			};
+		};
+		
+		.message-box_client-message {
+			display: flex;
+			justify-content: end;	
+		
+			.client-message {
+				background: #e0ffc7;
+				margin-right: 5px;
+				margin-left: 30px;
+				box-shadow: 2px 2px 5px #96ab85;
+			};
+		};		
 	};
 
 	.chat__bottom-box {
@@ -45,11 +93,18 @@
 			display: flex;
 			width: 100%;
 			height: 50px;
+			position: relative;
+			bottom: -1px;
+			left: 1px;
 			
 			.attachment-box {
 				width: 15%;
 				border-bottom-left-radius: 15px;
 				background-color: #ffffff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
 			};
 			
 			.message-box {
@@ -61,6 +116,7 @@
 					background-color: #ffffff;
 					border: none;
 					padding: 4px 6px;
+					resize: none;
 				};
 			};
 
@@ -68,8 +124,12 @@
 				width: 15%;
 				border-bottom-right-radius: 15px; 
 				border: none;
-				background-color: #4655a5;
+				background-image: url("../../../assets/btn.png");
+				background-position: center;
+				background-repeat: no-repeat;
+				cursor: pointer;
 			};
 		};
 	};
 };
+
