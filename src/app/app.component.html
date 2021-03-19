@@ -1,8 +1,8 @@
 <div class="container">
-	<div *ngIf="!this.userService.toggle">
+	<div *ngIf="this.userService.toggle">
 		<app-form-reg></app-form-reg>
 	</div>
-	<div *ngIf="this.userService.toggle">
+	<div *ngIf="!this.userService.toggle">
 		<app-main-page></app-main-page>
 	</div>
 </div>

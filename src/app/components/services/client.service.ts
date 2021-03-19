@@ -12,8 +12,10 @@ export class ClientService {
 	public currantClientName: string;
 
 	// Add New User
-	public addClient(clientName) {
+	public addClient(clientName: string) {
 		this.currantClientName = clientName;
 		this.toggle = !this.toggle;
 	}
 }
+
+
