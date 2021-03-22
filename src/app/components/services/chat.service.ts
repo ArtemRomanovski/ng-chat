@@ -55,15 +55,14 @@ export class ChatService {
 	}
 
 	public changeName() {
-		console.log();
-		this.chatDataBaseMessages.filter(i => {
+		this.chatDataBaseMessages.forEach(i => {
 			if(i.sender == "Покупатель") {
 				i.sender = this.senderValue;
 			}
 		});
 	}
 
-	public addMessage(titleValue) {
+	public addMessage(titleValue: string) {
 		this.getTimeMessage();
 		titleValue = titleValue.replace(/ +/g, " ").trim();
 		if(titleValue != undefined && titleValue != "") {
@@ -94,7 +93,7 @@ export class ChatService {
 	}
 
 	public disableBrowsereEvent() {
-		window.onkeydown = function(event) {
+		window.onkeydown = function(event: any) {
 			if(event.keyCode==13){
 				if(event.preventDefault) event.preventDefault(); // This should fix it
 				return false; // Just a workaround for old browsers

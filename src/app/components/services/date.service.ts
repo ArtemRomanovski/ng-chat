@@ -9,7 +9,7 @@ export class DateService {
 	public timeNow: string;
 
 	public getDate() {
-		const date = new Date();
+		const date: Date = new Date();
 		let day: any = date.getDate();
 		let month: any = date.getMonth()+1;
 		const year = date.getFullYear();
@@ -23,7 +23,7 @@ export class DateService {
 	}
 
 	public getTime() {
-		const date = new Date();
+		const date: Date = new Date();
 		const hour: any = date.getHours();
 		let minute: any = date.getMinutes();
 		if(minute<10) {

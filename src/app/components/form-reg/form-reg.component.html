@@ -9,8 +9,6 @@
 					Name
 				</label>
 				<input 
-					required 
-					minlength="3" 
 					formControlName="clientName"
 					name="clientName" 
 					id="clientName" 
@@ -21,22 +19,24 @@
 					>
 				<div 
 					class="alert alert-danger" 
-					*ngIf="clientService.clientForm.dirty == true && !clientService.clientForm.valid">
-					<div *ngIf="clientService.clientForm.controls.required">
+					*ngIf="clientService.clientForm.touched && !clientService.clientForm.valid">
+					<div *ngIf="clientService.clientForm.controls.clientName.errors?.required">
 						Nickname is required.
 					</div>
-					<div *ngIf="clientService.clientForm.controls.minlength">
+					<div *ngIf="clientService.clientForm.controls.clientName.errors?.minlength">
 						Name should be minimum
-						{{clientService.clientForm.errors.minlength.requiredLength}}
+						{{clientService.clientForm.controls.clientName.errors?.minlength?.requiredLength}}
 						characters.
 					</div>
-					<div>
-						<p>
+					<div *ngIf="clientService.clientForm.controls.clientName.errors?.maxlength">
+						Name should be maximum
+						{{clientService.clientForm.controls.clientName.errors?.maxlength?.requiredLength}}
+						characters.
+					</div>
+					<div *ngIf="clientService.clientForm.controls.clientName.errors?.pattern">
+					
 							The name must not consist of numbers or symbols.
-						</p>
-						<p>
-							Name should be maximum 20 letters.	
-						</p>
+					
 					</div>
 				</div>
 			</div>

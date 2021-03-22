@@ -8,6 +8,8 @@ export class ClientService {
 
 	public clientForm: FormGroup = new FormGroup({
 		"clientName": new FormControl("", [
+			Validators.required,
+			Validators.minLength(2),
 			Validators.maxLength(20),
 			Validators.pattern(/^[a-zA-Zа-яА-ЯёЁ ]*$/)
 		])
@@ -21,6 +23,12 @@ export class ClientService {
 		if(this.clientForm.valid){
 			this.currantClientName = clientName;
 			this.toggle = !this.toggle;
+		} else {
+			console.log(this.clientForm.controls.clientName.errors);
+
+
+
+			this.clientForm.markAllAsTouched();
 		}
 	}
 }
