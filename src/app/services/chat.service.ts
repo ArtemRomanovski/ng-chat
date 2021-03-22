@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { MessageCard } from "../models/messageCard";
 import { ClientService } from "./client.service";
 import { DateService } from "./date.service";
 
@@ -7,7 +8,7 @@ import { DateService } from "./date.service";
 })
 export class ChatService {
 
-	public chatDataBaseMessages = [
+	public chatDataBaseMessages: MessageCard[] = [
 		{
 			sender: "Поставщик",
 			title: "Message 1. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
@@ -46,7 +47,7 @@ export class ChatService {
 
 	constructor(
 		private clientService: ClientService,
-		private dateService: DateService
+		private dateService: DateService,
 	) { }
 
 	public getTimeMessage() {
@@ -64,17 +65,19 @@ export class ChatService {
 
 	public addMessage(titleValue: string) {
 		this.getTimeMessage();
-		titleValue = titleValue.replace(/ +/g, " ").trim();
-		if(titleValue !== undefined && titleValue !== "") {
-			this.fakeM = titleValue;
-			const message = {
-				sender: this.senderValue,
-				title: titleValue,
-				time: this.timeValue
-			};
-			this.chatDataBaseMessages.unshift(message);
-			this.message = "";
-			this.addFakeMessage(); // add Fake Message
+		if(titleValue !== undefined) {
+			titleValue = titleValue.replace(/ +/g, " ").trim();
+			if(titleValue !== undefined && titleValue !== "") {
+				this.fakeM = titleValue;
+				const message = {
+					sender: this.senderValue,
+					title: titleValue,
+					time: this.timeValue
+				};
+				this.chatDataBaseMessages.unshift(message);
+				this.message = "";
+				this.addFakeMessage(); // add Fake Message
+			}
 		}
 	}
 

@@ -1,0 +1,32 @@
+[
+	{
+		"sender": "Поставщик",
+		"title": "Message 1. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"time": "15:32"
+	},
+	{
+		"sender": "Покупатель",
+		"title": "Message 2. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"time": "16:49"
+	},
+	{
+		"sender": "Поставщик",
+		"title": "Message 3. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"time": "15:32"
+	},
+	{
+		"sender": "Поставщик",
+		"title": "Message 4. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"time": "15:32"
+	},
+	{
+		"sender": "Покупатель",
+		"title": "Message 5. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"time": "16:49"
+	},
+	{
+		"sender": "Поставщик",
+		"title": "Message 6. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"time": "16:49"
+	}
+]
