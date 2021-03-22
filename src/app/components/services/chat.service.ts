@@ -55,6 +55,7 @@ export class ChatService {
 	}
 
 	public changeName() {
+		console.log();
 		this.chatDataBaseMessages.filter(i => {
 			if(i.sender == "Покупатель") {
 				i.sender = this.senderValue;
@@ -64,15 +65,18 @@ export class ChatService {
 
 	public addMessage(titleValue) {
 		this.getTimeMessage();
-		this.fakeM = titleValue;
-		const message = {
-			sender: this.senderValue,
-			title: titleValue,
-			time: this.timeValue
-		};
-		this.chatDataBaseMessages.unshift(message);
-		this.message = "";
-		this.addFakeMessage(); // add Fake Message
+		titleValue = titleValue.replace(/ +/g, " ").trim();
+		if(titleValue != undefined && titleValue != "") {
+			this.fakeM = titleValue;
+			const message = {
+				sender: this.senderValue,
+				title: titleValue,
+				time: this.timeValue
+			};
+			this.chatDataBaseMessages.unshift(message);
+			this.message = "";
+			this.addFakeMessage(); // add Fake Message
+		}
 	}
 
 	// add Fake Message

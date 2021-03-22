@@ -18,9 +18,10 @@ export class PChatComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.chatService.disableBrowsereEvent();
+		this.dateService.getFullDate();
 		setInterval(() => {
 			this.dateService.getFullDate();
-		}, 0);
+		}, 1000);
 		this.chatService.chatDataBaseMessages.reverse();
 		this.chatService.changeName();
 	}

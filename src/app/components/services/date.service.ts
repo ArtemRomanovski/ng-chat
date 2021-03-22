@@ -20,13 +20,15 @@ export class DateService {
 			month = "0" + month;
 		}
 		return this.dateNow = day + "." + month + "." + year;
-
 	}
 
 	public getTime() {
 		const date = new Date();
 		const hour: any = date.getHours();
-		const minute: any = date.getMinutes();
+		let minute: any = date.getMinutes();
+		if(minute<10) {
+			minute = "0" + minute;
+		}
 		this.timeNow = hour + ":" + minute;
 	}
 

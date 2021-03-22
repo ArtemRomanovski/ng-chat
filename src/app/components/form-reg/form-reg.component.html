@@ -1,50 +1,51 @@
 <div class="form-box">
-	<form>
-		<div class="form-group">
-			<label for="UserName">
-				Name
-			</label>
-			<input 
-				required 
-				minlength="3" 
-				[pattern]="this.clientService.regExpName[0]"
-				[maxlength]="this.clientService.maxLength" 
-				ngModel 
-				name="UserName" 
-				#clientName="ngModel"
-				id="UserName" 
-				class="form-control field" 
-				type="text"
-				placeholder="name" 
-				autofocus>
-			<div 
-				class="alert alert-danger" 
-				*ngIf="clientName.touched && !clientName.valid">
-				<div *ngIf="clientName.errors.required">
-					Nickname is required.
-				</div>
-				<div *ngIf="clientName.errors.minlength">
-					Name should be minimum
-					{{clientName.errors.minlength.requiredLength}}
-					characters.
-				</div>
-				<div>
-					<p>
-						The name must not consist of numbers or symbols.
-					</p>
-					<p>
-						Name should be maximum 20 letters.	
-					</p>
+	<form 
+		[formGroup]="this.clientService.clientForm" 
+		(ngSubmit)="addUser(clientService.clientForm.value.clientName);"
+		(keydown.enter)="addUser(clientService.clientForm.value.clientName);"
+		>
+			<div class="form-group">
+				<label for="clientName">
+					Name
+				</label>
+				<input 
+					required 
+					minlength="3" 
+					formControlName="clientName"
+					name="clientName" 
+					id="clientName" 
+					class="form-control field" 
+					type="text"
+					placeholder="name"
+					autofocus
+					>
+				<div 
+					class="alert alert-danger" 
+					*ngIf="clientService.clientForm.dirty == true && !clientService.clientForm.valid">
+					<div *ngIf="clientService.clientForm.controls.required">
+						Nickname is required.
+					</div>
+					<div *ngIf="clientService.clientForm.controls.minlength">
+						Name should be minimum
+						{{clientService.clientForm.errors.minlength.requiredLength}}
+						characters.
+					</div>
+					<div>
+						<p>
+							The name must not consist of numbers or symbols.
+						</p>
+						<p>
+							Name should be maximum 20 letters.	
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div>
-			<button 
-				(click)="addUser(clientName.value);" 
-				type="submit" 
-				class="btn btn-primary">
-				Go
-			</button>
-		</div>
+			<div>
+				<button 
+					type="submit" 
+					class="btn btn-primary">
+					Go
+				</button>
+			</div>
 	</form>
 </div>
