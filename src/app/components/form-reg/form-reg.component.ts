@@ -10,7 +10,7 @@ export class FormRegComponent {
 
 	constructor(public clientService: ClientService) {}
 
-	public addUser(clientName: string) {
+	public addUser(clientName: string): void {
 		this.clientService.addClient(clientName);
 	}
 }

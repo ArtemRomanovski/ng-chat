@@ -26,7 +26,7 @@ export class PChatComponent implements OnInit {
 		this.chatService.changeName();
 	}
 
-	public pushMessage(titleValue: string) {
+	public pushMessage(titleValue: string): void {
 		this.chatService.addMessage(titleValue);
 	}
 }

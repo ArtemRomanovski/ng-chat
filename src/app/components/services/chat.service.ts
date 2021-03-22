@@ -56,7 +56,7 @@ export class ChatService {
 
 	public changeName() {
 		this.chatDataBaseMessages.forEach(i => {
-			if(i.sender == "Покупатель") {
+			if(i.sender === "Покупатель") {
 				i.sender = this.senderValue;
 			}
 		});
@@ -65,7 +65,7 @@ export class ChatService {
 	public addMessage(titleValue: string) {
 		this.getTimeMessage();
 		titleValue = titleValue.replace(/ +/g, " ").trim();
-		if(titleValue != undefined && titleValue != "") {
+		if(titleValue !== undefined && titleValue !== "") {
 			this.fakeM = titleValue;
 			const message = {
 				sender: this.senderValue,
@@ -94,7 +94,7 @@ export class ChatService {
 
 	public disableBrowsereEvent() {
 		window.onkeydown = function(event: any) {
-			if(event.keyCode==13){
+			if(event.keyCode===13){
 				if(event.preventDefault) event.preventDefault(); // This should fix it
 				return false; // Just a workaround for old browsers
 			}
